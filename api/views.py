@@ -52,7 +52,7 @@ def upload(request):
     was_limited = getattr(request, 'limited', False)
     if was_limited:
         data = {'Error':'too many attempts'}
-        return Response(data,status=403)
+        return Response(data,status=429)
     if request.method == 'POST':
         user = request.user
         if user.id == None:
